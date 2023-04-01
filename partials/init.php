@@ -13,7 +13,7 @@ final class init
     public static function get_services()
     {
         return [
-            Pages\Admin_CPT::class,
+            Pages\admin_CPT::class,
             Pages\Book_Metabox::class,
             Pages\Admin_Menu::class,
             Pages\Custom_Shortcode::class,

@@ -1,6 +1,6 @@
 <?php
 
-namespace \partials\api;
+namespace partials\api;
 
 class Meta_Table{
     //create a new custom meta table for book
@@ -22,8 +22,14 @@ class Meta_Table{
                 )
                 COLLATE {$wpdb_collate}";
                  
-                require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+                require_once(ABSPATH .'wp-admin/includes/upgrade.php');
                 dbDelta($q);//for creating new tables and updating existing tables to a new structure.
         }
+    }
+    //for run  metadata api
+    public function register_table_with_wpdb(){
+        global $wpdb;
+        $wpdb->bookmeta = $wpdb->prefix . 'bookmeta';
+        $wpdb->tables[] = 'bookmeta';
     }
 }
