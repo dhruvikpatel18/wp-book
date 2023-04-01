@@ -58,6 +58,31 @@ class admin_CPT{
 
         register_post_type('book',$args);
     }
+
+    /**
+     * register taxonomy for CPT book
+     */
+    public function register_custom_taxonomy() {
+
+        // Hierarchical
+        $args = [
+            'labels' => $this->get_labels( 'Categorie' ),
+            'public' => true,
+            'rewrite' => array( 'slug' => 'books/categories' ),
+            'hierarchical' => true,
+        ];
+        register_taxonomy( 'book-categories', 'book', $args );
+
+        // Non-Hierarchical
+        $args = [
+            'labels' => $this->get_labels( 'Tag' ),
+            'public' => true,
+            'rewrite' => array( 'slug' => 'books/tags' ),
+            'hierarchical' => false,
+        ];
+        register_taxonomy( 'book-tags', 'book', $args );
+    }
+
      /**
      * generate labels for taxonomy
      * @return array    array of labels
